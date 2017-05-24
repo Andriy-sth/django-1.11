@@ -8,7 +8,7 @@ from django.conf import settings
 def contact(request):
     title = 'Contact'
     form = contactForm(request.POST or None)
-    context = {'title': title, 'form': form}
+    confirm_message = None
     if form.is_valid():
         name = form.cleaned_data['name']
         comment = form.cleaned_data['comment']
@@ -19,7 +19,8 @@ def contact(request):
         send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
         title = 'Thanks'
         confirm_message = 'we will get right'
-        context = {'title'}
+        form = None
 
+    context = {'title': title, 'form': form, 'confirm_massage': confirm_message}
     template = 'contact.html'
     return render(request, template, context)

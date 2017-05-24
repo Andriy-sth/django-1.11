@@ -4,11 +4,13 @@ from django.views.generic import View
 
 # Create your views here.
 def home(request):
-    context = locals()
+    context = {}
     template = 'home.html'
     return render(request, template, context)
 
 
 class About(View):
     def get(self, request):
-        return render(request, 'about.html')
+        context = {}
+        template = 'about.html'
+        return render(request, template, context)
