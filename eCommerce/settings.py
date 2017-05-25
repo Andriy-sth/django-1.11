@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'profiles',
     'contact',
     'crispy_forms',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +78,15 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 
 WSGI_APPLICATION = 'eCommerce.wsgi.application'
 
@@ -131,3 +144,9 @@ if DEBUG:
         os.path.join(os.path.dirname(BASE_DIR), 'static', 'static'),
     )
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+SITE_ID = 1
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+
