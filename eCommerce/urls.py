@@ -19,6 +19,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from profiles import views as profiles_views
 from contact import views as contact_views
+from checkout import views as checkout_views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +29,7 @@ urlpatterns = [
     url(r'^contacts/$', contact_views.contact, name='contact'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
+    url(r'^checkout/$', checkout_views.checkout, name='checkout'),
 ]
 
 if settings.DEBUG:
