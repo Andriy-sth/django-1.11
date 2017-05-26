@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^about/$', profiles_views.About.as_view(), name='about'),
     url(r'^contacts/$', contact_views.contact, name='contact'),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^profile$', profiles_views.userProfile, name='profile')
+    url(r'^profile/$', profiles_views.userProfile, name='profile'),
 ]
 
 if settings.DEBUG:
